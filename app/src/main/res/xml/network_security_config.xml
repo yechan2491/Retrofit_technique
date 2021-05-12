@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">jsonplaceholder.typicode.com </domain>
+        <domain includeSubdomains="true">jsonplaceholder.typicode.com/posts/1 </domain>
+        <domain includeSubdomains="true">jsonplaceholder.typicode.com/posts </domain>
+        <domain includeSubdomains="true">api.github.com/users/yechan2491</domain>
+    </domain-config>
+</network-security-config>
