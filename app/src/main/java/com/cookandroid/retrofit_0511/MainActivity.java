@@ -56,39 +56,50 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        Call<List<Post>> call = jsonPlaceHolderApi.getPost("1");
-        call.enqueue(new Callback<List<Post>>() {
-            @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                if (!response.isSuccessful()) {
-                    textViewResult.setText("code: " + response.code());
-                    return;
-                }
-
-                List<Post> posts = response.body();
-                Toast.makeText(getApplicationContext(),"배열문제인가?",Toast.LENGTH_LONG).show();
-                textViewResult.setText("안녕");
-            }
-
-            @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
-                textViewResult.setText(t.getMessage());
-            }
-        });
+//        Call<List<Post>> call = jsonPlaceHolderApi.getPost("1");
+//        call.enqueue(new Callback<List<Post>>() {
+//            @Override
+//            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+//                if (!response.isSuccessful()) {
+//                    textViewResult.setText("code: " + response.code());
+//                    return;
+//                }
+//
+//                List<Post> posts = response.body();
+//                Toast.makeText(getApplicationContext(),"?",Toast.LENGTH_LONG).show();
+//                //textViewResult.setText(posts.get(0).getBody());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Post>> call, Throwable t) {
+//                textViewResult.setText(t.getMessage());
+//            }
+//        });
 
 
         // 여기서 부터 데이터 전송송
-       HashMap<String,Object> input=new HashMap<>();
-        input.put("userId",1);
+        HashMap<String,Object> input=new HashMap<>();
+        input.put("userId",100);
         input.put("title","제목넣자");
         input.put("body","body body 당근당근");
         jsonPlaceHolderApi.postData(input).enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
                 if (response.isSuccessful()){
-                    Post data=response.body();
-                    textViewResult.append(data.getBody());
+
+                    Post postResponse = response.body();
+
+                    String content = "";
+                    content += "Code : " + response.code() + "\n";
+                    content += "Id : " + postResponse.getId() + "\n";
+                    content += "User Id : " + postResponse.getUserId() + "\n";
+                    content += "Title : " + postResponse.getTitle() + "\n";
+                    content += "Text : " + postResponse.getBody() + "\n";
+
+                    textViewResult.setText(content);
+
                 }
+                else Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -96,5 +107,54 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        Post post=new Post(100,"dd","Dd");
+        jsonPlaceHolderApi.putData(5,post).enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                if (!response.isSuccessful()){
+                    textViewResult.setText("code: " + response.message());
+                    return;
+                }
+
+                Post postResponse = response.body();
+
+                String content = "";
+                content += "Code : " + response.code() + "\n";
+                content += "Id : " + postResponse.getId() + "\n";
+                content += "User Id : " + postResponse.getUserId() + "\n";
+                content += "Title : " + postResponse.getTitle() + "\n";
+                content += "Text : " + postResponse.getBody() + "\n";
+
+                textViewResult.setText(content);
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+
+            }
+        });
+
+
+        jsonPlaceHolderApi.deleteData(5).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    textViewResult.setText("code: " + response.message());
+                    return;
+                }
+                String content = "";
+                content += "code: " + response.code()+"\n";
+                content += "정상적으로 삭제되었습니다.";
+
+                textViewResult.setText(content);
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+
     }
 }

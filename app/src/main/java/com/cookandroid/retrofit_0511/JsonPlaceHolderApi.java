@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -21,5 +24,12 @@ public interface JsonPlaceHolderApi {
 
     @FormUrlEncoded
     @POST("/posts")
-    Call<Post> postData(@FieldMap HashMap<String , Object> param);
+    Call<Post> postData( @FieldMap HashMap<String , Object> param);
+
+
+    @PUT("/posts/{path}")
+    Call<Post> putData(@Path("path") int path,@Body Post post);
+
+    @DELETE("posts/{path}")
+    Call<Void> deleteData(@Path("path") int path);
 }

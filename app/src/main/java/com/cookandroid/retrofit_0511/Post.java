@@ -11,10 +11,21 @@ public class Post { //https://jsonplaceholder.typicode.com 서버에 있는 Json
      *     "body": "quia et suscipit\nsuscipit ~~~"
      * },
      */
+
+
+
     private int userId;
     private int id;
     private String title;
     private String body;
+
+    public Post(int userId, String title, String body){
+        this.userId=userId;
+        this.title=title;
+        this.body=body;
+    }
+
+
 
     public int getUserId() {
         return userId;
