@@ -17,7 +17,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private final String BASEURL = "https://jsonplaceholder.typicode.com";
+    private final String BASEURL = "http://34.204.61.107";
     private TextView textViewResult;
 
 
@@ -79,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
         // 여기서 부터 데이터 전송송
         HashMap<String,Object> input=new HashMap<>();
-        input.put("userId",100);
-        input.put("title","제목넣자");
-        input.put("body","body body 당근당근");
+        input.put("CLIENT_ID","20160991");
+        input.put("CLIENT_PWD","HI");
+        input.put("CLIENT_NAME","문예찬");
+        input.put("CLIENT_PHONE","01098772491");
+        input.put("CLIENT_EMAIL","yechan2491@naver.com");
         jsonPlaceHolderApi.postData(input).enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
@@ -89,72 +91,73 @@ public class MainActivity extends AppCompatActivity {
 
                     Post postResponse = response.body();
 
-                    String content = "";
-                    content += "Code : " + response.code() + "\n";
-                    content += "Id : " + postResponse.getId() + "\n";
-                    content += "User Id : " + postResponse.getUserId() + "\n";
-                    content += "Title : " + postResponse.getTitle() + "\n";
-                    content += "Text : " + postResponse.getBody() + "\n";
+//                    String content = "";
+//                    content += "Code : " + response.code() + "\n";
+//                    content += "Id : " + postResponse.getId() + "\n";
+//                    content += "User Id : " + postResponse.getUserId() + "\n";
+//                    content += "Title : " + postResponse.getTitle() + "\n";
+//                    content += "Text : " + postResponse.getBody() + "\n";
 
-                    textViewResult.setText(content);
+                  //  textViewResult.setText(content);
+                    Toast.makeText(getApplicationContext(),"성공",Toast.LENGTH_LONG).show();
 
                 }
-                else Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+                else Toast.makeText(getApplicationContext(),"성공",Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
             }
         });
 
-        Post post=new Post(100,"dd","Dd");
-        jsonPlaceHolderApi.putData(5,post).enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                if (!response.isSuccessful()){
-                    textViewResult.setText("code: " + response.message());
-                    return;
-                }
-
-                Post postResponse = response.body();
-
-                String content = "";
-                content += "Code : " + response.code() + "\n";
-                content += "Id : " + postResponse.getId() + "\n";
-                content += "User Id : " + postResponse.getUserId() + "\n";
-                content += "Title : " + postResponse.getTitle() + "\n";
-                content += "Text : " + postResponse.getBody() + "\n";
-
-                textViewResult.setText(content);
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-
-            }
-        });
-
-
-        jsonPlaceHolderApi.deleteData(5).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (!response.isSuccessful()) {
-                    textViewResult.setText("code: " + response.message());
-                    return;
-                }
-                String content = "";
-                content += "code: " + response.code()+"\n";
-                content += "정상적으로 삭제되었습니다.";
-
-                textViewResult.setText(content);
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
+//        Post post=new Post(100,"dd","Dd");
+//        jsonPlaceHolderApi.putData(5,post).enqueue(new Callback<Post>() {
+//            @Override
+//            public void onResponse(Call<Post> call, Response<Post> response) {
+//                if (!response.isSuccessful()){
+//                    textViewResult.setText("code: " + response.message());
+//                    return;
+//                }
+//
+//                Post postResponse = response.body();
+//
+//                String content = "";
+//                content += "Code : " + response.code() + "\n";
+//                content += "Id : " + postResponse.getId() + "\n";
+//                content += "User Id : " + postResponse.getUserId() + "\n";
+//                content += "Title : " + postResponse.getTitle() + "\n";
+//                content += "Text : " + postResponse.getBody() + "\n";
+//
+//                textViewResult.setText(content);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Post> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//        jsonPlaceHolderApi.deleteData(5).enqueue(new Callback<Void>() {
+//            @Override
+//            public void onResponse(Call<Void> call, Response<Void> response) {
+//                if (!response.isSuccessful()) {
+//                    textViewResult.setText("code: " + response.message());
+//                    return;
+//                }
+//                String content = "";
+//                content += "code: " + response.code()+"\n";
+//                content += "정상적으로 삭제되었습니다.";
+//
+//                textViewResult.setText(content);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Void> call, Throwable t) {
+//
+//            }
+//        });
 
     }
 }

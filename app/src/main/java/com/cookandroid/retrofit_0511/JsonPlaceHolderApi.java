@@ -23,7 +23,7 @@ public interface JsonPlaceHolderApi {
     Call<List<Post>> getPost(@Query("userId") String id);
 
     @FormUrlEncoded
-    @POST("/posts")
+    @POST("/user/join")
     Call<Post> postData( @FieldMap HashMap<String , Object> param);
 
 

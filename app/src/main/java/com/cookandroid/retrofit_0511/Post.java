@@ -14,48 +14,54 @@ public class Post { //https://jsonplaceholder.typicode.com 서버에 있는 Json
 
 
 
-    private int userId;
-    private int id;
-    private String title;
-    private String body;
+    @SerializedName("CLIENT_ID")
+    private String CLIENT_ID;
+    @SerializedName("CLIENT_PWD")
+    private String CLIENT_PWD;
+    @SerializedName("CLIENT_NAME")
+    private String CLIENT_NAME;
+    @SerializedName("CLIENT_PHONE")
+    private String CLIENT_PHONE;
+    @SerializedName("CLIENT_EMAIL")
+    private String CLIENT_EMAIL;
 
-    public Post(int userId, String title, String body){
-        this.userId=userId;
-        this.title=title;
-        this.body=body;
+    public String getCLIENT_ID() {
+        return CLIENT_ID;
     }
 
-
-
-    public int getUserId() {
-        return userId;
+    public void setCLIENT_ID(String CLIENT_ID) {
+        this.CLIENT_ID = CLIENT_ID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String getCLIENT_PWD() {
+        return CLIENT_PWD;
     }
 
-    public int getId() {
-        return id;
+    public void setCLIENT_PWD(String CLIENT_PWD) {
+        this.CLIENT_PWD = CLIENT_PWD;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getCLIENT_NAME() {
+        return CLIENT_NAME;
     }
 
-    public String getTitle() {
-        return title;
+    public void setCLIENT_NAME(String CLIENT_NAME) {
+        this.CLIENT_NAME = CLIENT_NAME;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getCLIENT_PHONE() {
+        return CLIENT_PHONE;
     }
 
-    public String getBody() {
-        return body;
+    public void setCLIENT_PHONE(String CLIENT_PHONE) {
+        this.CLIENT_PHONE = CLIENT_PHONE;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public String getCLIENT_EMAIL() {
+        return CLIENT_EMAIL;
+    }
+
+    public void setCLIENT_EMAIL(String CLIENT_EMAIL) {
+        this.CLIENT_EMAIL = CLIENT_EMAIL;
     }
 }

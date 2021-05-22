@@ -4,6 +4,7 @@
         <domain includeSubdomains="true">jsonplaceholder.typicode.com </domain>
         <domain includeSubdomains="true">jsonplaceholder.typicode.com/posts/1 </domain>
         <domain includeSubdomains="true">jsonplaceholder.typicode.com/posts </domain>
-        <domain includeSubdomains="true">api.github.com/users/yechan2491</domain>
+        <domain includeSubdomains="true">34.204.61.107</domain>
+        <domain includeSubdomains="true">34.204.61.107/user/join</domain>
     </domain-config>
 </network-security-config>
